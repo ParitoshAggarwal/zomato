@@ -14,7 +14,6 @@ class CBS extends Component {
     this.handleOldAddZom(ncb, cb, number);
   };
   handleOldAddZom = (ncb, cb, number) => {
-    // ncb[0].remButton = 1;
     cb.push({ id: ncb[0].id, user: 1, remButton: 1, idx: ncb[0].idx });
     this.setState({ CB: cb });
 
@@ -22,10 +21,6 @@ class CBS extends Component {
   };
 
   handleOldAddUser = (ncb, cb, number) => {
-    // ncb[0].user = 0;
-    // ncb[0].remButton = 1;
-    // ncb[0].id = ncb[0].id + 1;
-    // ncb[0].idx = number;
     cb.push({ id: ncb[0].id + 1, user: 0, remButton: 1, idx: number });
     this.setState({ CB: cb });
 
@@ -33,10 +28,6 @@ class CBS extends Component {
   };
 
   handleNewAdd = (ncb, cb, number) => {
-    // ncb[0].remButton = 0;
-    // ncb[0].id = ncb[0].id + 1;
-    // ncb[0].user = 1;
-    // ncb[0].idx = number;
     cb.push({ id: ncb[0].id + 2, user: 1, remButton: 0, idx: number });
     this.setState({ CB: cb });
   };

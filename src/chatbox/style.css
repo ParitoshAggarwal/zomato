@@ -1,0 +1,45 @@
+.zomtextbox {
+  padding: 2px;
+  margin: 8px;
+  background-color: lightblue;
+  border-radius: 5px;
+  width: 55%;
+}
+.zombtn {
+  width: 100.8%;
+  /*margin: -2px;*/
+  margin-left: -2px;
+  margin-right: -2px;
+  color: #668cff;
+  text-align: left;
+  border: 0px;
+  border-bottom: 2px lightgrey solid;
+}
+.zomtext {
+  padding: 2px;
+  margin: 5px;
+  color: #33373d;
+  font-size: 0.95em;
+  /*padding:1.05em;*/
+}
+
+.usertextbox {
+  padding: 2px;
+  margin: 8px;
+  padding-bottom: 13px;
+  background-color: lightgrey;
+  margin-left: 43%;
+  border-radius: 5px;
+  width: 55%;
+}
+
+.usertext {
+  padding: 2px;
+  margin: 5px;
+  color: #33373d;
+  font-size: 0.95em;
+}
+
+.floatright {
+  float: right;
+}

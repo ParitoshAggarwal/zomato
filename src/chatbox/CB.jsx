@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./style.css";
 
 class CB extends Component {
   state = {
@@ -13,20 +14,21 @@ class CB extends Component {
       6: [10],
       7: [10],
       8: [10],
-      9: [10]
+      9: [10],
+      10: []
     },
     sentmap: {
       //static
       0: "everyone is busy",
-      1: "this is start 1",
-      2: "under 1->2",
-      3: "under 1->3",
-      4: "under 1->4",
-      5: "under 2->5",
-      6: "under 2->6",
-      7: "under 3->7",
-      8: "under 3->8",
-      9: "under 3->9",
+      1: "Hello, please select the order for which you seek support",
+      2: "Order from Raj Chinese Food. Placed on 26th Mar at 12:39 PM. #1481706006",
+      3: "Order from Vijay Indian Food. Placed on 27th Mar at 11:39 PM. #1481706008",
+      4: "Other previous orders",
+      5: "we got it do want to talk to executive",
+      6: "anyway you have to talk to executive",
+      7: "just click and talk to executive",
+      8: "just click and talk to executive please",
+      9: "just click and talk to executive sunle na",
       10: "call to executive"
     }
   };
@@ -34,29 +36,32 @@ class CB extends Component {
   printButtonsOrNot() {
     if (this.props.remButton === 0) {
       return (
-        <div>
-          <p>{this.props.user === 1 ? "Zomato" : "User"}</p>
+        <span>
           {this.state.indxmap[this.props.idx].map(tags => (
-            <div>
-              <button
-                key={tags}
-                onClick={() => this.props.onDelete(this.props.id, tags)}
-              >
-                {this.state.sentmap[tags]}
-              </button>
-            </div>
+            <button
+              className="zombtn"
+              key={tags}
+              onClick={() => this.props.onDelete(this.props.id, tags)}
+            >
+              {this.state.sentmap[tags]}
+            </button>
           ))}
-        </div>
+        </span>
       );
     }
-    return <p>{this.props.user === 1 ? "Zomato" : "User"}</p>;
   }
 
   render() {
     return (
-      <div>
-        <p>{this.state.sentmap[this.props.idx]}</p>
+      <div className={this.props.user == 1 ? "zomtextbox" : "usertextbox"}>
+        <p className={this.props.user == 1 ? "zomtext" : "usertext"}>
+          {this.state.sentmap[this.props.idx]}
+        </p>
         {this.printButtonsOrNot()}
+        <p className={this.props.user == 1 ? "zomtext" : "usertext"}>
+          {this.props.user == 1 ? "Zomato" : ""}{" "}
+          <span className="floatright">7:43</span>
+        </p>
       </div>
     );
   }
