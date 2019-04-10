@@ -53,13 +53,13 @@ class CB extends Component {
 
   render() {
     return (
-      <div className={this.props.user == 1 ? "zomtextbox" : "usertextbox"}>
-        <p className={this.props.user == 1 ? "zomtext" : "usertext"}>
+      <div className={this.props.user === 1 ? "zomtextbox" : "usertextbox"}>
+        <p className={this.props.user === 1 ? "zomtext" : "usertext"}>
           {this.state.sentmap[this.props.idx]}
         </p>
         {this.printButtonsOrNot()}
-        <p className={this.props.user == 1 ? "zomtext" : "usertext"}>
-          {this.props.user == 1 ? "Zomato" : ""}{" "}
+        <p className={this.props.user === 1 ? "zomtext" : "usertext"}>
+          {this.props.user === 1 ? "Zomato" : ""}{" "}
           <span className="floatright">7:43</span>
         </p>
       </div>
