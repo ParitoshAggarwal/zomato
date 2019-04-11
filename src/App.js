@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import CBS from "./chatbox/CBS";
-
 class App extends Component {
+  componentDidMount() {}
   render() {
     return (
       <div className="container">
