@@ -14,7 +14,7 @@ class CB extends Component {
 
   componentDidMount() {
     var reference = this;
-    fb.ref("/userid/user1/indxmap")
+    fb.ref("/userid/user1/indxmap") //ADD USER HERE IN PLACE OF 'user1'
       .once("value")
       .then(function(snapshot) {
         reference.setState({
@@ -22,7 +22,7 @@ class CB extends Component {
         });
       });
 
-    fb.ref("/userid/user1/sentmap/")
+    fb.ref("/userid/user1/sentmap/") //ADD USER HERE IN PLACE OF 'user1'
       .once("value")
       .then(function(snapshot) {
         reference.setState({
@@ -50,19 +50,30 @@ class CB extends Component {
     }
   }
 
+  showLoader() {
+    let tim = this.state.indxmap[0] === undefined;
+    let tsm = this.state.sentmap[0] === undefined;
+    if (tim === false && tsm === false) {
+      return (
+        <div className={this.props.user === 1 ? "zomtextbox" : "usertextbox"}>
+          <p className={this.props.user === 1 ? "zomtext" : "usertext"}>
+            {this.state.sentmap[this.props.idx]}
+          </p>
+          {this.printButtonsOrNot()}
+          <p className={this.props.user === 1 ? "zomtext" : "usertext"}>
+            {this.props.user === 1 ? "Zomato" : ""}{" "}
+            <span className="floatright">7:43</span>
+          </p>
+        </div>
+      );
+    } else
+      return (
+        <span className="loaderBottom">Zomato Chat Support Loading...</span>
+      );
+  }
+
   render() {
-    return (
-      <div className={this.props.user === 1 ? "zomtextbox" : "usertextbox"}>
-        <p className={this.props.user === 1 ? "zomtext" : "usertext"}>
-          {this.state.sentmap[this.props.idx]}
-        </p>
-        {this.printButtonsOrNot()}
-        <p className={this.props.user === 1 ? "zomtext" : "usertext"}>
-          {this.props.user === 1 ? "Zomato" : ""}{" "}
-          <span className="floatright">7:43</span>
-        </p>
-      </div>
-    );
+    return <span className="loader">{this.showLoader()}</span>;
   }
 }
 

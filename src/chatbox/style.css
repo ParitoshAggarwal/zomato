@@ -45,6 +45,17 @@
 .floatright {
   float: right;
 }
+
+.loaderBottom {
+  position: fixed;
+  bottom: 0;
+  font-weight: 800;
+  padding: 2px;
+  left: 0;
+  width: 100%;
+  background-color: lightgrey;
+}
+
 @keyframes slide-up {
   0% {
     opacity: 0;

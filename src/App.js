@@ -6,6 +6,8 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <p className="dateBox">Today</p>
+
         <CBS />
       </div>
     );

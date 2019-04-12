@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CB from "./CB.jsx";
 import "firebase/database";
 import fb from "../fbConfig";
+import $ from "jquery";
 
 class CBS extends Component {
   constructor() {
@@ -13,11 +14,21 @@ class CBS extends Component {
 
   componentDidMount() {
     var reference = this;
-    fb.ref("/chatPool/chats/").on("value", function(snapshot) {
+    fb.ref("/chatPool/user1/").on("value", function(snapshot) {
       reference.setState({
         CB: snapshot.val() || "nahi mila"
       });
     });
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    var scrollLength = 100000000000000000000000;
+    $("html, body").animate({ scrollTop: scrollLength }, "slow");
   }
 
   handleDelete = (passedId, number) => {
@@ -33,7 +44,9 @@ class CBS extends Component {
       user: 1,
       remButton: 1,
       idx: ncb[0].idx,
-      agent: 0
+      agent: 0,
+      date: 900,
+      time: 900
     });
     this.setState({ CB: cb });
 
@@ -41,15 +54,31 @@ class CBS extends Component {
   };
 
   handleOldAddUser = (ncb, cb, number) => {
-    cb.push({ id: ncb[0].id + 1, user: 0, remButton: 1, idx: number });
+    cb.push({
+      id: ncb[0].id + 1,
+      user: 0,
+      remButton: 1,
+      idx: number,
+      agent: 0,
+      date: 900,
+      time: 900
+    });
     this.setState({ CB: cb });
     this.handleNewAdd(ncb, cb, number);
   };
 
   handleNewAdd = (ncb, cb, number) => {
-    cb.push({ id: ncb[0].id + 2, user: 1, remButton: 0, idx: number });
+    cb.push({
+      id: ncb[0].id + 2,
+      user: 1,
+      remButton: 0,
+      idx: number,
+      agent: 0,
+      date: 900,
+      time: 900
+    });
     this.setState({ CB: cb });
-    fb.ref("/chatPool/").set({ chats: cb });
+    fb.ref("/chatPool/").set({ user1: cb });
   };
 
   render() {
